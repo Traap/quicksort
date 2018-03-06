@@ -7,7 +7,7 @@ module QuickSort(
 import Data.List (partition)
 
 -- | Put a list of into ascending order    
-quicksort :: (Ord a) => [Z] -> [Z]
+quicksort :: (Ord a) => [a] -> [a]
 quicksort xs = case xs of
    []     -> []
    (y:ys) -> let
@@ -15,7 +15,7 @@ quicksort xs = case xs of
       in (quicksort ls) ++ y:(quicksort rs)
     
 -- | Test to see if a list is in order    
-isInOrder :: (Ord a) => [Z] -> Bool
+isInOrder :: (Ord a) => [a] -> Bool
 isInOrder xs = case xs of   
    [] -> True -- trivially true
    (x:ys) -> case ys of 
@@ -23,7 +23,7 @@ isInOrder xs = case xs of
        (y:_) -> x<=y && isInOrder ys
 
 -- | Test if two lists have the same elements 
-hasSameElements :: (Ord a, Eq a) => [Z] -> [Z] -> Bool
+hasSameElements :: (Ord a, Eq a) => [a] -> [a] -> Bool
 hasSameElements xs ys 
     = ( xs `isSubBagOrEqual` ys) 
     && (ys `isSubBagOrEqual` xs)  
@@ -31,7 +31,7 @@ hasSameElements xs ys
 -- | Test that the multiplicity of each element in the
 -- first list is less than or equal to the multiplicity
 -- of the same element in the second list.    
-isSubBagOrEqual :: (Ord a, Eq a) => [Z] -> [Z] -> Bool
+isSubBagOrEqual :: (Ord a, Eq a) => [a] -> [a] -> Bool
 isSubBagOrEqual xs ys = all (\ x -> let 
     mulxs = multiplicity x xs
     mulys = multiplicity x ys 
@@ -39,7 +39,7 @@ isSubBagOrEqual xs ys = all (\ x -> let
         
 -- |  Count the number of times that an element occurs
 -- within a list.    
-multiplicity :: (Ord a, Eq a) => a -> [Z] -> Int
+multiplicity :: (Ord a, Eq a) => a -> [a] -> Int
 multiplicity _ [] = 0
 multiplicity x (y:ys) 
    | x==y  = 1 + multiplicity x ys 
