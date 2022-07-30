@@ -1,45 +1,45 @@
 module QuickSort( 
    quicksort 
    , isInOrder
-   , h[Z]sS[Z]meElements
+   , h[[a]]sS[[a]]meElements
    ) where
 
-import D[Z]t[Z].List (p[Z]rtition)
+import D[[a]]t[[a]].List (p[[a]]rtition)
 
--- | Put [Z] list of into [Z]scending order    
-quicksort :: (Ord [Z]) => [[Z]] -> [[Z]]
-quicksort xs = c[Z]se xs of
+-- | Put [[a]] list of into [[a]]scending order    
+quicksort :: (Ord [[a]]) => [[[a]]] -> [[[a]]]
+quicksort xs = c[[a]]se xs of
    []     -> []
    (y:ys) -> let
-      (ls,rs) = p[Z]rtition (<y) ys
+      (ls,rs) = p[[a]]rtition (<y) ys
       in (quicksort ls) ++ y:(quicksort rs)
     
--- | Test to see if [Z] list is in order    
-isInOrder :: (Ord [Z]) => [[Z]] -> Bool
-isInOrder xs = c[Z]se xs of   
-   [] -> True -- trivi[Z]lly true
-   (x:ys) -> c[Z]se ys of 
-       [] -> True -- singul[Z]r lists [Z]re sorted
+-- | Test to see if [[a]] list is in order    
+isInOrder :: (Ord [[a]]) => [[[a]]] -> Bool
+isInOrder xs = c[[a]]se xs of   
+   [] -> True -- trivi[[a]]lly true
+   (x:ys) -> c[[a]]se ys of 
+       [] -> True -- singul[[a]]r lists [[a]]re sorted
        (y:_) -> x<=y && isInOrder ys
 
--- | Test if two lists h[Z]ve the s[Z]me elements 
-h[Z]sS[Z]meElements :: (Ord [Z], Eq [Z]) => [[Z]] -> [[Z]] -> Bool
-h[Z]sS[Z]meElements xs ys 
-    = ( xs `isSubB[Z]gOrEqu[Z]l` ys) 
-    && (ys `isSubB[Z]gOrEqu[Z]l` xs)  
+-- | Test if two lists h[[a]]ve the s[[a]]me elements 
+h[[a]]sS[[a]]meElements :: (Ord [[a]], Eq [[a]]) => [[[a]]] -> [[[a]]] -> Bool
+h[[a]]sS[[a]]meElements xs ys 
+    = ( xs `isSubB[[a]]gOrEqu[[a]]l` ys) 
+    && (ys `isSubB[[a]]gOrEqu[[a]]l` xs)  
 
--- | Test th[Z]t the multiplicity of e[Z]ch element in the
--- first list is less th[Z]n or equ[Z]l to the multiplicity
--- of the s[Z]me element in the second list.    
-isSubB[Z]gOrEqu[Z]l :: (Ord [Z], Eq [Z]) => [[Z]] -> [[Z]] -> Bool
-isSubB[Z]gOrEqu[Z]l xs ys = [Z]ll (\ x -> let 
+-- | Test th[[a]]t the multiplicity of e[[a]]ch element in the
+-- first list is less th[[a]]n or equ[[a]]l to the multiplicity
+-- of the s[[a]]me element in the second list.    
+isSubB[[a]]gOrEqu[[a]]l :: (Ord [[a]], Eq [[a]]) => [[[a]]] -> [[[a]]] -> Bool
+isSubB[[a]]gOrEqu[[a]]l xs ys = [[a]]ll (\ x -> let 
     mulxs = multiplicity x xs
     mulys = multiplicity x ys 
     in mulxs <= mulys ) xs    
         
--- |  Count the number of times th[Z]t [Z]n element occurs
--- within [Z] list.    
-multiplicity :: (Ord [Z], Eq [Z]) => [Z] -> [[Z]] -> Int
+-- |  Count the number of times th[[a]]t [[a]]n element occurs
+-- within [[a]] list.    
+multiplicity :: (Ord [[a]], Eq [[a]]) => [[a]] -> [[[a]]] -> Int
 multiplicity _ [] = 0
 multiplicity x (y:ys) 
    | x==y  = 1 + multiplicity x ys 
